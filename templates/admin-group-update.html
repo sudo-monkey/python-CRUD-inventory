@@ -1,0 +1,54 @@
+{% extends 'base.html' %} 
+{% block content%}
+<!--main container start-->
+{% load crispy_forms_filters %}
+
+<div class="main-container">
+  <div class="card">
+    {% if user.is_authenticated %} {% if user.is_admin %} {% if user.is_staff %}
+    <p>Your last visit was on {{user.last_login}}</p>
+  </div>
+  <div class="card">
+            <h2>Edit Group Access Manager | {{GroupUpdate}}</h2>
+            </div>
+            <div class="card">
+                <div style="width: 100%">
+                <div style="float: left; width: 50%">
+                    <br />
+                    <body>
+                     {% for user in usergroup %} {% if user.group_id == 1 %}
+
+                     <h3>You are applying the following permission(s) to the whole users in the {{GroupUpdate}} department.</h3>
+
+                    {% endif%} {%endfor%}
+
+                    <form method="post">
+                    {% csrf_token %} 
+                    
+                    <br>
+                    {{form|crispy}}
+                    
+                    <br>
+                    <button type="submit" class="btn btn-success">Update</button>
+                    </form>
+                </body
+                <br />
+          
+      {% else %}
+      <p>You are currently not logged in.</p>
+      <p>Login<a href="/login"> here</a></p>
+      {% endif %} {% else %}
+      <p>
+        You are not permissioned to view this page. Please contact administrator
+        or
+      </p>
+      <p>Login<a href="/login"> with the right access here</a></p>
+      {% endif %} {% else %}
+      <p>You are not an admin</p>
+      <p>Login<a href="/login"> here</a></p>
+      {% endif %}
+    </div>
+  </div>
+  <!--main container end-->
+  {% endblock%}
+</div>

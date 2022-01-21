@@ -1,0 +1,80 @@
+{% extends 'base.html' %} {% block content%}
+     <!--main container start-->
+      <div class="main-container">
+        <div class="card">
+              {% if user.is_staff%}
+
+          <p>
+            Your last visit was on {{user.last_login}}
+            <br><br>
+          </p>
+        </div>
+        <div class="card">
+          <h2>
+            Inventory Overview
+          </h2>
+        </div>
+        <div class="card">
+          <p>
+            <div style="width:100%;"> 
+            <div style="float:left; width:50%;">
+            <br />
+            <body>
+                {% load static %} <img src="{% static "mystorev2/media/warehouse.png" %}" width = "65" height = "80 "alt="warehouse"/>
+                
+                <h3 style="color:blue">ACTIVE WAREHOUSE LIST</h3><br><br>
+                {%for ware in warehouse%}
+                {{ware.id}} || Name: {{ware.wh_name}} <br>
+                Description : {{ware.wh_desc}} <br><br>
+                <a href="{{ware.id}}/update-wh">
+                    <input type="button" value="Edit"/>
+                 </a> 
+                 <a href="{{ware.id}}/delete-wh">
+                    <input type="button" value="Delete"/>
+                 </a> 
+                 <a href="/add-wh">
+                    <input type="button" value="Add"/>
+                 </a> <br><br>
+                {%endfor%}
+            </body>
+            <br />
+        </div>
+
+        <div style="float:right; width:50%; "> 
+         </a>
+            <br />
+            <body>
+                <br>
+                {% load static %} <img src="{% static "mystorev2/media/product.png" %}" width = "60" height = "55 "alt="product"/>
+                <h3 style="color:blue">ACTIVE PRODUCT LIST</h3><br><br>
+                {%for prod in product%}
+                {{prod.id}} || Name: {{prod.prod_name}} || {{prod.prodkey}} ||<br>
+                Quantity: {{prod.prod_qty}}<br>
+                Description : {{prod.prod_desc}}<br><br>
+                <a href="{{prod.id}}/update-pd">
+                    <input type="button" value="Edit"/>
+                 </a> 
+                 <a href="{{prod.id}}/delete-pd">
+                    <input type="button" value="Delete"/>
+                 </a>
+                 <a href="/add-pd">
+                    <input type="button" value="Add"/>
+                 </a> <br><br>
+                {%endfor%}
+            </body>
+            <br />
+        </div>
+          </p>
+
+           {% else %}
+                    <p>You are not authorized to view this page. Please contact administrator or </p>
+                    <p>Login<a href="/login"> with the right access here</a></p>
+                {% endif %}
+            
+        </div>
+      </div>
+      <!--main container end-->
+
+
+  {% endblock%}
+</div>

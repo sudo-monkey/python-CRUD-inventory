@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content%}
+
+<!--main container start-->
+    <script>
+    function validateForm() {
+    var regex = /^[0-9a-zA-Z]+$/;
+    let x = document.forms["registerForm"]["username"].value;
+    if (x != regex.value) {
+        alert("Username can't contain illegal character e.g: ^[0-9a-zA-Z]+$");
+    return false;
+  }
+}
+    </script> 
+    
+
+
+    <div class="main-container" style="width:100%;">
+        <p>
+            <h2>User Registration</h2>
+            <form method="post" onsubmit="return validateForm()" name="registerForm">
+            {% csrf_token %}
+                <table>
+                    <tr>
+                    <td align="right">Username:</td>
+                    <td align="left">{{form.username}}</td>
+                    </tr>
+                    <tr>
+                    <td align="right">E-mail address:</td>
+                    <td align="left">{{form.email}}</td>
+                    </tr>
+                    <tr>
+                    <td align="right">Password:</td>
+                    <td align="left">{{form.password}}</td>
+                    </tr>
+                    <tr>
+                    <td align="right">Department:</td>
+                    <td align="left">{{form.group}}</td>
+                    </tr>
+                </table>
+                    <button type="submit" id ="submitBtn" class="btn btn-primary">Register</button>
+            </form>
+          </p>
+        </div>
+    </div>
+    <!--main container end-->
+
+
+
+
+</html>
+
+{% endblock%}
+
+
+
+

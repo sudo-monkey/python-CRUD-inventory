@@ -1,0 +1,74 @@
+{% extends 'base.html' %} {% block content%}
+<!--main container start-->
+<div class="main-container">
+  <div class="card">
+    {% if user.is_authenticated %} {% if user.is_admin %} {% if user.is_staff %}
+    <p>Your last visit was on {{user.last_login}}</p>
+  </div>
+  <div class="card">
+    <h2>Group Access Manager</h2>
+  </div>
+  <div class="card">
+    <div style="width: 100%">
+      <div style="float: left; width: 50%">
+        <br />
+        <body>
+          <br />
+          {% load static %} <img src="{% static "mystorev2/media/user.png" %}"
+          width = "75" height = "75 "alt="warehouse"/>
+          <h2>User</h2>
+          <br />
+          {%for us in allUser%}
+
+          <a href="{{us.id}}/managementaccess">
+            <input type="button" value="Edit" />
+          </a>
+          <br />
+          {{us.id}} || Name: {{us.username}} <br />
+          Email : {{us.email}} <br />
+          Last logged in: {{us.last_login}}<br />
+          Joined on: {{us.date_joined}}<br />
+          <br />
+          <br />
+
+          {%endfor%}
+        </body>
+        <br />
+      </div>
+      <div style="float: right; width: 50%">
+        <br />
+        <br />
+        <body>
+          {% load static %} <img src="{% static "mystorev2/media/dept.svg" %}"
+          width = "75" height = "75 "alt="product"/>
+          <h2>Details</h2>
+          <br />
+          {%for us2 in allUser%} {{us2.username}} || Department:
+          {{us2.groups}}<br />
+          Active staff: {{us2.is_staff}}<br />
+          Admin: {{us2.is_admin}}<br />
+          Superuser: {{us2.is_superuser}}
+
+          <br /><br />
+          {%endfor%}
+        </body>
+        <br />
+      </div>
+      {% else %}
+      <p>You are currently not logged in.</p>
+      <p>Login<a href="/login"> here</a></p>
+      {% endif %} {% else %}
+      <p>
+        You are not permissioned to view this page. Please contact administrator
+        or
+      </p>
+      <p>Login<a href="/login"> with the right access here</a></p>
+      {% endif %} {% else %}
+      <p>You are not an admin</p>
+      <p>Login<a href="/login"> here</a></p>
+      {% endif %}
+    </div>
+  </div>
+  <!--main container end-->
+  {% endblock%}
+</div>

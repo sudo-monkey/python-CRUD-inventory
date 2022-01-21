@@ -1,0 +1,54 @@
+{% extends 'base.html' %} {% block content%}
+<!--main container start-->
+<div class="main-container">
+  <div class="card">
+    {% if user.is_authenticated %} {% if user.is_admin %} {% if user.is_staff %}
+  </div>
+  <div class="card">
+    <h2>Update Access</h2>
+    <p>Your last visit was on {{user.last_login}}</p>
+  </div>
+  <div class="card">
+    {% load crispy_forms_filters %}
+
+    <div style="width: 100%">
+      <div style="float: left; width: 100%">
+        <br />
+        <body>
+          <br />
+          {% load static %} <img src="{% static "mystorev2/media/user.png" %}"
+          width = "75" height = "75 "alt="warehouse"/>
+          <h2>User</h2>
+          {{group}}
+          <br />
+
+          <form method="post">
+            {% csrf_token %} {{form|crispy}}
+
+            <button type="submit" class="btn btn-success">Update</button>
+          </form>
+          <br />
+
+          <br />
+        </body>
+        <br />
+      </div>
+      {% else %}
+      <p>You are currently not logged in.</p>
+      <p>Login<a href="/login"> here</a></p>
+      {% endif %} {% else %}
+      <p>
+        You are not permissioned to view this page. Please contact administrator
+        or
+      </p>
+      <p>Login<a href="/login"> with the right access here</a></p>
+      {% endif %} {% else %}
+      <p>You are not an admin</p>
+      <p>Login<a href="/login"> here</a></p>
+      {% endif %}
+    </div>
+  </div>
+  <!--main container end-->
+
+  {% endblock%}
+</div>

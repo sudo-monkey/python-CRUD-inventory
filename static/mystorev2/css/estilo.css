@@ -1,0 +1,215 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+body {
+    background: #fff;
+}
+
+.wrapper .header {
+    z-index: 1;
+    background: rgba(0,0,0,.8);
+    position: fixed;
+    width: calc(100% - 0%);
+    height: 70px;
+    display: flex;
+    top: 0;
+}
+
+.wrapper .header .header-menu {
+    width: calc(100% - 0%);
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.wrapper .header .header-menu .title {
+    color: rgba(255,255,255,.7);
+    font-size: 1.6em;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.wrapper .header .header-menu .title span {
+    color: #4cceeb;
+}
+
+.wrapper .header .header-menu .sidebar-btn {
+    color: rgba(255,255,255,.7);
+    position: absolute;
+    margin-left: 9.4em;
+    font-size: 1.6em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 1s;
+}
+
+.wrapper .header .header-menu .sidebar-btn:hover {
+    opacity: .6;
+}
+
+.wrapper .header .header-menu ul {
+    display: flex;
+}
+
+.wrapper .header .header-menu ul li a {
+    background-color: rgba(255,255,255,.7);
+    color: rgba(0,0,0,.7);
+    display: block;
+    margin: 0 10px;
+    font-size: 18px;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    border-radius: 50%;
+    transition: all 1s;
+}
+
+.wrapper .header .header-menu ul li a:hover {
+    opacity: .6;
+}
+/* ate aqui tudo certo */
+
+.wrapper .sidebar {
+    z-index: 1;
+    background: rgba(0,0,0,.8);
+    position: fixed;
+    top: 70px;
+    width: 250px;
+    height: calc(100% - 9%);
+    transition: all 1s;
+    overflow-y: hidden;
+}
+.wrapper .sidebar .sidebar-menu {
+    overflow: hidden;
+}
+
+.wrapper .sidebar .sidebar-menu .profile img {
+    margin: 1em auto;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+.profile img {
+	background-color: rgba(255,255,255,.6);
+	transition: all 1s;
+}
+.wrapper .sidebar .sidebar-menu .profile p {
+    color: rgba(255,255,255,.7);
+    font-weight: 700;
+    margin-bottom: 1em;
+}
+
+.wrapper .sidebar .sidebar-menu .item {
+    width: 250px;
+    overflow: hidden;
+}
+
+.wrapper .sidebar .sidebar-menu .item .menu-btn {
+    display: block;
+    color: rgba(255,255,255,.7);
+    position: relative;
+    padding: 1em;
+    transition: all 1s;
+}
+
+.wrapper .sidebar .sidebar-menu .item .menu-btn:hover {
+    opacity: .6;
+}
+
+.wrapper .sidebar .sidebar-menu .item .menu-btn i {
+    margin-right: 1em;
+}
+
+.wrapper .sidebar .sidebar-menu .item .menu-btn .drop-down {
+    float: right;
+    font-size: 1em;
+    margin-top: .2em;
+}
+
+.wrapper .sidebar .sidebar-menu .item .sub-menu {
+    background: rgba(255,255,255,.6);
+    overflow: hidden;
+    max-height: 0;
+    transition: all 1s;
+}
+
+.wrapper .sidebar .sidebar-menu .item .sub-menu a {
+    display: block;
+    position: relative;
+    color: rgba(0,0,0,.7);
+    white-space: nowrap;
+    font-size: 1em;
+    padding: 1em;
+    border-bottom: 1px solid rgba(0,0,0,.3);
+    transition: all 1s;
+}
+
+.wrapper .sidebar .sidebar-menu .item .sub-menu a:hover {
+    opacity: .6;
+}
+
+.wrapper .sidebar .sidebar-menu .item .sub-menu i {
+    padding-right: 1em;
+    font-size: .8em;
+}
+
+.wrapper .sidebar .sidebar-menu .item:hover .sub-menu {
+    max-height: 500px;
+}
+
+.main-container {
+    width: (100% - 250px);
+    margin-top: 4em;
+    margin-left: 16em;
+    padding: 1em;;
+    height: 100vh;
+    transition: all 1s;
+}
+
+.wrapper.collapse .sidebar {
+    width: 70px;
+}
+
+.wrapper.collapse .sidebar .profile img,
+.wrapper.collapse .sidebar .profile p,
+.wrapper.collapse .sidebar a span {
+    display: none;
+}
+
+.wrapper.collapse .sidebar .sidebar-menu .item .menu-btn {
+    font-size: 23px;
+}
+
+.wrapper.collapse .sidebar .sidebar-menu .item .sub-menu i {
+    font-size: 18px;
+    padding-left: .2em;
+}
+
+.wrapper.collapse .main-container {
+    width: (100% - 70px);
+    margin-left: 70px;
+}
+
+.wrapper .main-container .card {
+    background: #fff;
+    padding: 1em;
+    font-size: 1em;
+    margin-bottom: 1em;
+}
+
+
+
+
+
+
+

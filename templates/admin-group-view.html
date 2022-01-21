@@ -1,0 +1,74 @@
+{% extends 'base.html' %} 
+{% block content%}
+<!--main container start-->
+{% load crispy_forms_filters %}
+
+<div class="main-container">
+  <div class="card">
+    {% if user.is_authenticated %} {% if user.is_admin %} {% if user.is_staff %}
+    <p>Your last visit was on {{user.last_login}}</p>
+  </div>
+  <div class="card">
+    <h2>Access Manager</h2>
+  </div>
+  <div class="card">
+    <div style="width: 100%">
+      <div style="float: left; width: 50%">
+        <br />
+        <body>
+        <table>
+                {% csrf_token %} 
+                <h3>Administrator Department</h3>
+                
+
+                {% for i in admin%} 
+                <table>{{ i.username }}</table>
+                {%endfor%}
+
+                {% for i in admin%} 
+                <button><a href="/management/groupaccess/{{i.group_id }}"</a>Edit</button>
+                {%endfor%}<br>
+
+                <h3>Tech Department</h3>
+                {% for i in tech%} 
+                <table>{{ i.username }}</table>
+                {%endfor%}
+                {% for i in users_2%} 
+                <table>{{ i.is_staff }}</table>
+                {%endfor%}<br> 
+
+                <h3>Sales Department</h3>
+                {% for i in sales%} 
+                <table>{{ i.username }}</table>
+                {%endfor%} <br>
+
+                <h3>Marketing Department</h3>
+                {% for i in marketing%} 
+                <table>{{ i.username }}</table>
+                {%endfor%} <br>
+
+
+        </table>
+    
+        {{form|crispy}}
+        </body
+          <br />
+          
+      {% else %}
+      <p>You are currently not logged in.</p>
+      <p>Login<a href="/login"> here</a></p>
+      {% endif %} {% else %}
+      <p>
+        You are not permissioned to view this page. Please contact administrator
+        or
+      </p>
+      <p>Login<a href="/login"> with the right access here</a></p>
+      {% endif %} {% else %}
+      <p>You are not an admin</p>
+      <p>Login<a href="/login"> here</a></p>
+      {% endif %}
+    </div>
+  </div>
+  <!--main container end-->
+  {% endblock%}
+</div>

@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% block content%}
+ <!--main container start-->
+        <div class="main-container">
+          <div class="card">
+            {% if user.is_staff%}
+
+            <p>
+              Your last visit was on {{user.last_login}}
+              <br /><br />
+            </p>
+          </div>
+          <div class="card">
+            <h2>Edit Product</h2>
+          </div>
+          <div class="card">
+            <form method="post">
+            <table>
+               <form method="post">
+                {% csrf_token %}
+                Name {{ form.wh_name }}
+                Description {{form.wh_desc}}<br><br>
+                <a href="/">
+                             <button type="button" class="btn btn-primary">Back</button>
+
+             </a> 
+              &nbsp;
+                <button type="submit" class="btn btn-primary">Update</button>
+            </form>
+            {% else %}
+            <p>
+              You are not authorized to view this page. Please contact
+              administrator or
+            </p>
+            <p>Login<a href="/login"> with the right access here</a></p>
+            {% endif %}
+          </div>
+        </div>
+        <!--main container end-->
+{% endblock%}
